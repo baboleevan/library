@@ -337,7 +337,6 @@ class FileUploader
         $this->newFileName = $this->getNewImageName();
 
         $saveFileName = Environment::UPLOAD_PATH . $this->uploadSubPath . $this->prefixFolder . $this->newFileName . $this->getExtension();
-
         $this->url = Environment::PROJECT_URL . $this->uploadSubPath . $this->prefixFolder . $this->newFileName . $this->getExtension();
         $this->realFilename = $this->uploadSubPath . $this->prefixFolder . $this->newFileName . $this->getExtension();
 
