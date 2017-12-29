@@ -14,9 +14,6 @@ namespace CafeLatte\Libraries;
 use CafeLatte\Core\Environment;
 use CafeLatte\Exception\FileUploadFailException;
 
-/**
- * @author Thorpe Lee <koangbok@gmail.com>
- */
 class FileUploader
 {
 

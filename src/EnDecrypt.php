@@ -12,9 +12,6 @@ namespace CafeLatte\Libraries;
 
 use CafeLatte\Exception\InvalidLogicException;
 
-/**
- * @author Thorpe Lee <koangbok@gmail.com>
- */
 class EnDecrypt
 {
 

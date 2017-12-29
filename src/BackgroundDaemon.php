@@ -14,7 +14,7 @@ namespace CafeLatte\Libraries;
 class BackgroundDaemon
 {
     /**
-     * Background 파일을 실행한다.
+     * run Background
      *
      * @param string $command
      * @param int $wait
