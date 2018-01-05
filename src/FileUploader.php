@@ -14,6 +14,9 @@ namespace CafeLatte\Libraries;
 use CafeLatte\Core\Environment;
 use CafeLatte\Exception\FileUploadFailException;
 
+/**
+ * @author Thorpe Lee <koangbok@gmail.com>
+ */
 class FileUploader
 {
 
@@ -86,19 +89,11 @@ class FileUploader
     public function __construct($subPath, array $files)
     {
         $this->file = $files;
-
         $this->setUploadPath($subPath);
         $this->setPermitExt();
         $this->setBannedExt();
         $this->setLimitMaxSize();
         $this->setPrefixFolder();
-
-        $this->validationFileErrorCode();
-        $this->validationExtension();
-        $this->validationPermitExtension();
-        $this->validationSize();
-        $this->validationError();
-        $this->setMakeDir();
     }
 
 
@@ -219,6 +214,17 @@ class FileUploader
         return $this;
     }
 
+    /**
+     * @param string $uploadSubPath
+     * @return $this
+     */
+    public function setUploadSubPath(string $uploadSubPath = "./")
+    {
+        $this->uploadSubPath = $uploadSubPath;
+
+        return $this;
+    }
+
 
     /**
      * @param string $case
@@ -331,9 +337,19 @@ class FileUploader
      */
     public function upload()
     {
+        $this->validationFileErrorCode();
+        $this->validationExtension();
+        $this->validationPermitExtension();
+        $this->validationSize();
+        $this->validationError();
+        $this->setMakeDir();
+
         $this->newFileName = $this->getNewImageName();
 
         $saveFileName = Environment::UPLOAD_PATH . $this->uploadSubPath . $this->prefixFolder . $this->newFileName . $this->getExtension();
+
+
+
         $this->url = Environment::PROJECT_URL . $this->uploadSubPath . $this->prefixFolder . $this->newFileName . $this->getExtension();
         $this->realFilename = $this->uploadSubPath . $this->prefixFolder . $this->newFileName . $this->getExtension();
 
